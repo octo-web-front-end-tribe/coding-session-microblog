@@ -1,7 +1,8 @@
 import React from 'react';
+import MessageList from '../MessageList/MessageList';
 
 const App = () => (
-  <div>Hello world</div>
+  <MessageList />
 );
 
 export default App;
