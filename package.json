@@ -9,6 +9,7 @@
     "build": "webpack",
     "lint": "eslint src/**/*.js",
     "mocha": "mocha --reporter spec --compilers js:babel-register -r jsdom-global/register --recursive 'src/**/*.spec.js'",
+    "mocha-watch": "npm run mocha -- --watch",
     "test": "npm run lint & npm run mocha"
   },
   "dependencies": {
@@ -29,6 +30,7 @@
     "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
     "react-dom": "^15.3.2",
+    "sinon": "1.17.7",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2"
   }
