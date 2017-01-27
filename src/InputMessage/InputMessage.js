@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ApiHelper from '../ApiHelper/ApiHelper'
 
 class InputMessage extends Component {
   constructor(props) {
@@ -9,7 +8,7 @@ class InputMessage extends Component {
 
   onEnter({ key }) {
     if (key === 'Enter') {
-      ApiHelper.postMessage({
+      this.props.poster({
         author:'enDur',
         content: this.state.inputValue
       })
@@ -30,6 +29,10 @@ class InputMessage extends Component {
       />
     )
   }
+}
+
+InputMessage.propTypes = {
+  poster: React.PropTypes.func.isRequired
 }
 
 export default InputMessage;

@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import fetchMock from 'fetch-mock'
-import ApiHelper from './ApiHelper'
+import { fetchMessages, postMessage } from './ApiHelper'
 
 const messages = [
   { id: 'abcd', content: 'fakeContent', author: 'fakeAuthor' }
@@ -16,7 +16,7 @@ describe('ApiHelper component', () => {
       after(fetchMock.restore)
 
       it('should return a response with the expected messages', () => {
-        return ApiHelper.fetchMessages()
+        return fetchMessages()
           .then((response) => {
             expect(fetchMock.calls().matched).to.have.length(1)
             expect(response).to.deep.equal(messages)
@@ -39,7 +39,7 @@ describe('ApiHelper component', () => {
           content: 'kikoo'
         }
 
-        return ApiHelper.postMessage(body)
+        return postMessage(body)
           .then(() => {
             expect(fetchMock.calls().matched).to.have.length(1)
             expect(fetchMock.calls().matched[0][1].body).to.equal(JSON.stringify(body))

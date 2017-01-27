@@ -1,16 +1,11 @@
-export function fetchMessages() {
+export const fetchMessages = () => {
   return fetch('https://skool-microblog.herokuapp.com/messages')
     .then(response => response.json())
 }
 
-export function postMessage(body) {
+export const postMessage = (body) => {
   return fetch('https://skool-microblog.herokuapp.com/messages', {
     method: 'POST',
     body: JSON.stringify(body)
   })
 }
-
-export default {
-  fetchMessages,
-  postMessage
-};

@@ -1,12 +1,13 @@
-import React from 'react';
-import MessageList from '../MessageList/MessageList';
-import InputMessage from '../InputMessage/InputMessage';
+import React from 'react'
+import MessageList from '../MessageList/MessageList'
+import InputMessage from '../InputMessage/InputMessage'
+import { fetchMessages, postMessage } from '../ApiHelper/ApiHelper'
 
 const App = () => (
   <div>
-    <MessageList />
-    <InputMessage />
+    <MessageList fetcher={fetchMessages} />
+    <InputMessage poster={postMessage} />
   </div>
-);
+)
 
-export default App;
+export default App

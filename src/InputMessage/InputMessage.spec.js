@@ -3,7 +3,6 @@ import { expect } from 'chai'
 import { shallow } from 'enzyme'
 import sinon from 'sinon'
 import InputMessage from './InputMessage'
-import ApiHelper from '../ApiHelper/ApiHelper'
 
 describe('InputMessage component', () => {
   describe('on render', () => {
@@ -32,21 +31,17 @@ describe('InputMessage component', () => {
     let spyApiHelperPostMessage
 
     before(() => {
-      spyApiHelperPostMessage = sinon.stub(ApiHelper, 'postMessage')
+      spyApiHelperPostMessage = sinon.stub()
     })
 
     afterEach(() => {
       spyApiHelperPostMessage.reset()
     })
 
-    after(() => {
-      spyApiHelperPostMessage.restore()
-    })
-
     describe('with a key different than enter', () => {
       it('should do nothing', () => {
         // given
-        const input = shallow(<InputMessage />).find('input')
+        const input = shallow(<InputMessage poster={spyApiHelperPostMessage} />).find('input')
         const notEnter = 0
 
         // when
@@ -60,7 +55,7 @@ describe('InputMessage component', () => {
     describe('with a key different than enter', () => {
       it('should call ApiHelper.postMessage with value', () => {
         // given
-        const wrapper = shallow(<InputMessage />)
+        const wrapper = shallow(<InputMessage poster={spyApiHelperPostMessage} />)
         wrapper.setState({inputValue: 'My new message'})
         const input = wrapper.find('input')
         const enter = 13

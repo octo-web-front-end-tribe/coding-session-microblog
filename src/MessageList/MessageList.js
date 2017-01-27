@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { fetchMessages } from '../ApiHelper/ApiHelper'
 import Message from '../Message/Message'
 
 class MessageList extends Component {
@@ -10,7 +9,7 @@ class MessageList extends Component {
   }
 
   componentWillMount() {
-    return fetchMessages()
+    return this.props.fetcher()
       .then(messages => this.setState({ messages }))
   }
 
@@ -23,6 +22,10 @@ class MessageList extends Component {
       </ul>
     )
   }
+}
+
+MessageList.propTypes = {
+  fetcher: React.PropTypes.func.isRequired
 }
 
 export default MessageList;
