@@ -7,3 +7,4 @@ dist
 .tmp/*
 yarn.lock
 public
+npm-debug.log*
