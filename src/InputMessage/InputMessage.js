@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { container, input } from './InputMessage.css'
 
 class InputMessage extends Component {
   constructor(props) {
@@ -22,11 +23,14 @@ class InputMessage extends Component {
 
   render() {
     return (
-      <input
-        value={ this.state.inputValue }
-        onChange={ (event) => this.onChange(event) }
-        onKeyPress={ (event) => this.onEnter(event) }
-      />
+      <div className={ container }>
+        <input
+          className={ input }
+          value={ this.state.inputValue }
+          onChange={ (event) => this.onChange(event) }
+          onKeyPress={ (event) => this.onEnter(event) }
+        />
+      </div>
     )
   }
 }

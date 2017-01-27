@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Message from '../Message/Message'
+import { container } from './MessageList.css'
 
 class MessageList extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class MessageList extends Component {
     const { messages } = this.state
 
     return (
-      <ul>
+      <ul className={ container }>
         { messages.map(message => <Message key={message.id} message={message} />) }
       </ul>
     )
