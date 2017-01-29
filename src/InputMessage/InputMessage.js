@@ -9,11 +9,13 @@ class InputMessage extends Component {
 
   onEnter({ key }) {
     if (key === 'Enter') {
-      ApiHelper.postMessage({
+      return ApiHelper.postMessage({
         author:'enDur',
         content: this.state.inputValue
+      }).then(() => {
+        this.props.onSubmit()
+        this.setState({inputValue: ''})
       })
-      this.setState({inputValue: ''})
     }
   }
 
